@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Project;
 use DateTime;
+use App\Entity\Tech;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -31,6 +33,16 @@ class ProjectType extends AbstractType
                 ]])
             ->add('github', TextType::class, ['label' => "Github", 'required' => false])
             ->add('link', TextType::class, ['label' => "Website", 'required' => false])
+            ->add('techs', EntityType::class, [
+                'label' => 'Techs',
+                'class' => Tech::class,
+                'choice_label' => function (Tech $tech) {
+                    return $tech->getName();
+                },
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference'=> false,
+            ] )
         ;
     }
 

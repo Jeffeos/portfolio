@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tech{% endblock %}
+
+{% block body %}
+    <h1>Edit Tech</h1>
+
+    {{ include('admin/tech/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_tech_index') }}">back to list</a>
+
+    {{ include('admin/tech/_delete_form.html.twig') }}
+{% endblock %}

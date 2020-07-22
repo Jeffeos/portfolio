@@ -15,6 +15,7 @@
                 <th>Display</th>
                 <th>Github</th>
                 <th>Link</th>
+                <th>Techs</th>
                 <th>Actions</th>
                 <th>Delete</th>
             </tr>
@@ -29,6 +30,11 @@
                 <td>{{ project.display ? 'Yes' : 'No' }}</td>
                 <td>{{ project.github }}</td>
                 <td>{{ project.link }}</td>
+                <td>
+                    {% for tech in project.techs %}
+                        {{ tech.name }}
+                    {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('admin_project_show', {'id': project.id}) }}">Show</a>
                     <a href="{{ path('admin_project_edit', {'id': project.id}) }}">Edit</a>

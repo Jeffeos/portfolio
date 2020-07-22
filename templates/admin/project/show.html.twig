@@ -35,6 +35,14 @@
                 <th>Link</th>
                 <td>{{ project.link }}</td>
             </tr>
+            <tr>
+                <th>Techs</th>
+                <td>
+                    {% for tech in project.techs %}
+                        <div>{{ tech.name }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
