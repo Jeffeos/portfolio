@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\PictureRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=PicturesRepository::class)
+ * @ORM\Entity(repositoryClass=PictureRepository::class)
+ * @Vich\Uploadable
  */
 class Picture
 {
@@ -24,8 +28,21 @@ class Picture
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $url;
+
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="url")
+     * @var File
+     */
+    private $urlFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="pictures")
@@ -71,6 +88,17 @@ class Picture
         return $this;
     }
 
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
     public function getProject(): ?Project
     {
         return $this->project;
@@ -105,5 +133,16 @@ class Picture
         $this->user = $user;
 
         return $this;
+    }
+
+    public function setUrlFile(File $image = null):Picture
+    {
+        $this->urlFile = $image;
+        return $this;
+    }
+
+    public function getUrlFile(): ?File
+    {
+        return $this->urlFile;
     }
 }
