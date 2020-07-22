@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Picture</th>
-                <td><img src="{{ vich_uploader_asset(picture, 'urlFile') }}"></td>
+                <td><img src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('thumb') }}"></td>
             </tr>
         </tbody>
     </table>
