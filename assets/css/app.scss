@@ -4,9 +4,30 @@ body {
     background-color: $primary;
     font-family: $fontSecondary;
 
+    // Styling for the whole content of the BODY
+    .body-block {
+        width: 80%;
+        margin: 0 auto;
+    }
+
     h1 {
         font-family: "Anton", sans-serif;
         text-align: center;
+    }
+
+    a {
+        color: $tertiary;
+    }
+
+    .btn {
+        background-color: $tertiary;
+        border-radius: 15px;
+        margin: 10px 0;
+    }
+
+    // Styling for all the FORMS
+    label {
+        margin: 5px 0;
     }
 }
 
@@ -14,3 +35,5 @@ body {
 .navbar {
     font-family: $fontPrimary;
 }
+
+// LOGIN STYLING
