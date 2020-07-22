@@ -58,9 +58,15 @@ class Project
      */
     private $techs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project")
+     */
+    private $pictures;
+
     public function __construct()
     {
         $this->techs = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,6 +167,37 @@ class Project
     {
         if ($this->techs->contains($tech)) {
             $this->techs->removeElement($tech);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getProject() === $this) {
+                $picture->setProject(null);
+            }
         }
 
         return $this;

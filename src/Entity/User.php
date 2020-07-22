@@ -59,6 +59,11 @@ class User implements UserInterface
      */
     private $github;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Picture::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $picture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -193,6 +198,24 @@ class User implements UserInterface
     public function setGithub(?string $github): self
     {
         $this->github = $github;
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $picture ? null : $this;
+        if ($picture->getUser() !== $newUser) {
+            $picture->setUser($newUser);
+        }
 
         return $this;
     }

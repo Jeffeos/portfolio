@@ -32,6 +32,11 @@ class Tech
      */
     private $projects;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Picture::class, mappedBy="tech", cascade={"persist", "remove"})
+     */
+    private $picture;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -77,6 +82,24 @@ class Tech
         if ($this->projects->contains($project)) {
             $this->projects->removeElement($project);
             $project->removeTech($this);
+        }
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newTech = null === $picture ? null : $this;
+        if ($picture->getTech() !== $newTech) {
+            $picture->setTech($newTech);
         }
 
         return $this;

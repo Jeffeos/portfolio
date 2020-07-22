@@ -42,7 +42,7 @@ class ProjectType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference'=> false,
-            ] )
+            ])
         ;
     }
 
