@@ -3,11 +3,13 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Project;
 use App\Entity\Tech;
+use App\Entity\Picture;
+use App\Form\PictureType;
 use App\Form\ProjectType;
 use App\Form\TechType;
+use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -197,4 +199,82 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_tech_index');
     }
+
+    /**
+     * @Route("/picture/", name="picture_index", methods={"GET"})
+     */
+    public function indexPicture(PictureRepository $pictureRepository): Response
+    {
+        return $this->render('admin/picture/index.html.twig', [
+            'pictures' => $pictureRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/picture/new", name="picture_new", methods={"GET","POST"})
+     */
+    public function newPicture(Request $request): Response
+    {
+        $picture = new Picture();
+        $form = $this->createForm(PictureType::class, $picture);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($picture);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_picture_index');
+        }
+
+        return $this->render('admin/picture/new.html.twig', [
+            'picture' => $picture,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/picture/{id}", name="picture_show", methods={"GET"})
+     */
+    public function showPicture(Picture $picture): Response
+    {
+        return $this->render('admin/picture/show.html.twig', [
+            'picture' => $picture,
+        ]);
+    }
+
+    /**
+     * @Route("/picture/{id}/edit", name="picture_edit", methods={"GET","POST"})
+     */
+    public function editPicture(Request $request, Picture $picture): Response
+    {
+        $form = $this->createForm(PictureType::class, $picture);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_picture_index');
+        }
+
+        return $this->render('admin/picture/edit.html.twig', [
+            'picture' => $picture,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/picture/{id}", name="picture_delete", methods={"DELETE"})
+     */
+    public function deletePicture(Request $request, Picture $picture): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$picture->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($picture);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_picture_index');
+    }
+
 }

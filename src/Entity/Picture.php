@@ -33,8 +33,8 @@ class Picture
     private $url;
 
     /**
-     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="url")
-     * @var File
+     * @Vich\UploadableField(mapping="url_file", fileNameProperty="url")
+     * @var File | null
      */
     private $urlFile;
 
@@ -135,9 +135,12 @@ class Picture
         return $this;
     }
 
-    public function setUrlFile(File $image = null):Picture
+    public function setUrlFile(File $picture = null):Picture
     {
-        $this->urlFile = $image;
+        $this->urlFile = $picture;
+        if ($picture) {
+            $this->updatedAt = new DateTime('now');
+        }
         return $this;
     }
 
