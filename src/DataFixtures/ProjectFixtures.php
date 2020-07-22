@@ -4,12 +4,18 @@ namespace App\DataFixtures;
 
 use App\Entity\Project;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use DateTime;
 
-class ProjectFixtures extends Fixture
+class ProjectFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function getDependencies()
+    {
+        return [TechFixtures::class];
+    }
+
     public function load(ObjectManager $manager)
     {
         // THE GREENER GOOD
@@ -24,6 +30,9 @@ class ProjectFixtures extends Fixture
         $project->setDisplay(1);
         $project->setGithub("https://github.com/WildCodeSchool/lyon-php-2003-project3-greenergood");
         $project->setLink("http://garecentrale.thegreenergood.fr");
+        $project->addTech($this->getReference("phpSymfony"));
+        $project->addTech($this->getReference("twig"));
+        $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
 
         // DOCTOPET
@@ -41,6 +50,9 @@ class ProjectFixtures extends Fixture
         $project->setDisplay(1);
         $project->setGithub("https://github.com/Jeffeos/doctopet");
         $project->setLink("Not deployed yet");
+        $project->addTech($this->getReference("phpSymfony"));
+        $project->addTech($this->getReference("twig"));
+        $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
 
         // TVDB
@@ -56,7 +68,11 @@ class ProjectFixtures extends Fixture
         $project->setDisplay(1);
         $project->setGithub("https://github.com/WildCodeSchool/lyon-php-2003-project2-databuzz");
         $project->setLink("Not deployed yet");
+        $project->addTech($this->getReference("simpleMVC"));
+        $project->addTech($this->getReference("twig"));
+        $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
+
         $manager->flush();
     }
 }

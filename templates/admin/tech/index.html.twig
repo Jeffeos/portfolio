@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Projects</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,6 +19,11 @@
             <tr>
                 <td>{{ tech.id }}</td>
                 <td>{{ tech.name }}</td>
+                <td>
+                    {% for project in tech.projects %}
+                        <div>{{ project.name }}</div>
+                    {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('admin_tech_show', {'id': tech.id}) }}">show</a>
                     <a href="{{ path('admin_tech_edit', {'id': tech.id}) }}">edit</a>
