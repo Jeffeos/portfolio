@@ -33,17 +33,15 @@ class PictureType extends AbstractType
                 'choice_label' => function (Project $project) {
                     return $project->getName();
                 },
-                'by_reference'=> false,
             ])
             ->add('tech', EntityType::class, [
-                'label' => 'Techs',
+                'label' => 'Tech',
                 'placeholder' => "",
                 'required' => false,
                 'class' => Tech::class,
                 'choice_label' => function (Tech $tech) {
                     return $tech->getName();
                 },
-                'by_reference'=> false,
             ])
             ->add('user', EntityType::class, [
                 'label' => 'User',
@@ -53,7 +51,6 @@ class PictureType extends AbstractType
                 'choice_label' => function (User $user) {
                     return $user->getFirstname() . $user->getLastname() ;
                 },
-                'by_reference'=> false,
             ])
         ;
     }
