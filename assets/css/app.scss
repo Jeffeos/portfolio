@@ -4,36 +4,45 @@ body {
     background-color: $primary;
     font-family: $fontSecondary;
 
-    // Styling for the whole content of the BODY
-    .body-block {
-        width: 80%;
-        margin: 0 auto;
-    }
+    .body-frame {
+        background: linear-gradient(135deg, #C0D9AF, #9DB68C, #A6D785);
 
-    h1 {
-        font-family: "Anton", sans-serif;
-        text-align: center;
-    }
+        margin: 50px auto;
+        padding: 50px;
+        width: 90%;
+        border-radius: 25px;
 
-    a {
-        color: $tertiary;
-    }
+        // NAVBAR STYLING
+        .navbar {
+            font-family: $fontPrimary;
+            background-color: transparent;
+        }
 
-    .btn {
-        background-color: $tertiary;
-        border-radius: 15px;
-        margin: 10px 0;
-    }
+        h1 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+        }
 
-    // Styling for all the FORMS
-    label {
-        margin: 5px 0;
-    }
-}
+        a {
+            color: $tertiary;
+        }
 
-// NAVBAR STYLING
-.navbar {
-    font-family: $fontPrimary;
+        .btn {
+            background-color: $tertiary;
+            border-radius: 15px;
+            margin: 10px 0;
+        }
+
+        // Styling for all the FORMS
+        label {
+            margin: 5px 0;
+        }
+
+        // INDEX STYLING
+        // PROJECT CARDS
+        .project-card {
+        }
+    }
 }
 
 // ADMIN STYLING

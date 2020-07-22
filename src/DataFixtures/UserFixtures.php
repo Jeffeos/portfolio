@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
         $user->setFirstname('Geoffrey');
         $user->setLastname('Delenne');
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setBrief("Welcome! I'm an agile developer trained in PHP Symfony and many other tools necessaries to develop modern Websites!");
+        $user->setBrief("Welcome! I'm an agile developer trained in PHP Symfony and many other tools necessaries to develop modern websites!");
         $user->setLinkedin("https://www.linkedin.com/in/geoffrey-delenne/");
         $user->setGithub("https://github.com/Jeffeos");
         $user->setPassword($this->passwordEncoder->encodePassword(

@@ -45,17 +45,17 @@ class Picture
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="picture", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="picture")
      */
     private $project;
 
     /**
-     * @ORM\OneToOne(targetEntity=Tech::class, inversedBy="picture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Tech::class, inversedBy="picture")
      */
     private $tech;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="picture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="picture")
      */
     private $user;
 
