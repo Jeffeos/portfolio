@@ -7,14 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Bio</a>
+                <a class="nav-link text-dark" href="#">BIO</a>
             </li>
             {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ path('admin_index') }}">ADMIN</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">{{ app.user.email }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ path('app_logout') }}"> Sign out</a>
+                    <a class="nav-link text-dark" href="{{ path('app_logout') }}"> SIGN OUT</a>
                 </li>
             {% endif %}
         </ul>

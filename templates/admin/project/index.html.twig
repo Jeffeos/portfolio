@@ -15,7 +15,8 @@
                 <th>Display</th>
                 <th>Github</th>
                 <th>Link</th>
-                <th>actions</th>
+                <th>Actions</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +30,10 @@
                 <td>{{ project.github }}</td>
                 <td>{{ project.link }}</td>
                 <td>
-                    <a href="{{ path('admin_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
+                    <a href="{{ path('admin_project_show', {'id': project.id}) }}">Show</a>
+                    <a href="{{ path('admin_project_edit', {'id': project.id}) }}">Edit</a>
                 </td>
+                <td class="index-delete">{{ include('admin/project/_delete_form.html.twig') }}</td>
             </tr>
         {% else %}
             <tr>
