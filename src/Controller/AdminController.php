@@ -224,6 +224,8 @@ class AdminController extends AbstractController
             $entityManager->persist($picture);
             $entityManager->flush();
 
+            $this->addFlash('success', 'The picture has been successfully added');
+
             return $this->redirectToRoute('admin_picture_index');
         }
 
@@ -254,6 +256,8 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'The picture has been successfully edited');
+
             return $this->redirectToRoute('admin_picture_index');
         }
 
@@ -271,7 +275,11 @@ class AdminController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$picture->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($picture);
+            dump($picture);
+
             $entityManager->flush();
+
+            $this->addFlash('danger', 'The picture has been successfully deleted');
         }
 
         return $this->redirectToRoute('admin_picture_index');

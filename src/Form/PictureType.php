@@ -21,7 +21,7 @@ class PictureType extends AbstractType
             ->add('name', TextType::class, ['label' => "Picture name"])
             ->add('urlFile', VichFileType::class, [
                 'label' => "Picture",
-                'required'      => false,
+                'required' => false,
                 'allow_delete'  => false, // not mandatory, default is true
                 'download_uri' => false, // not mandatory, default is true
             ])
