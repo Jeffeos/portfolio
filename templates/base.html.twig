@@ -17,13 +17,28 @@
             {% include('_navbar.html.twig') %}
         </header>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    {% for category, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
         <section class="container body-block">
             {% block body %}{% endblock %}
         </section>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+
+        {{ encore_entry_script_tags('app') }}
+
+        {% block javascripts %}{% endblock %}
 
     </body>
 </html>

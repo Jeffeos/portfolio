@@ -4,4 +4,10 @@
 
 {% block body %}
     <h1>Admin Index</h1>
+    <ul>
+        <li><a href="{{ path('admin_project_index') }}">Project list</a></li>
+        <li><a href="{{ path('admin_tech_index') }}">Tech list</a></li>
+        <li><a href="{{ path('admin_picture_index') }}">Picture list</a></li>
+    </ul>
+
 {% endblock %}
