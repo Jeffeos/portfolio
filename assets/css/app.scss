@@ -1,0 +1,16 @@
+@import "global.scss";
+
+body {
+    background-color: $primary;
+    font-family: $fontSecondary;
+
+    h1 {
+        font-family: "Anton", sans-serif;
+        text-align: center;
+    }
+}
+
+// NAVBAR STYLING
+.navbar {
+    font-family: $fontPrimary;
+}

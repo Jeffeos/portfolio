@@ -1,0 +1,12 @@
+// customize some Bootstrap variables
+$primary: #ffde22;
+$secondary: #ff8928;
+$tertiary: #ff414e;
+$quaternary: #000000;
+$quinary: #ffffff;
+
+$fontPrimary: 'Anton', sans-serif;
+$fontSecondary: 'Roboto', sans-serif;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
