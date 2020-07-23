@@ -49,7 +49,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             ");
         $project->setDisplay(1);
         $project->setGithub("https://github.com/Jeffeos/doctopet");
-        $project->setLink("Not deployed yet");
         $project->addTech($this->getReference("phpSymfony"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
@@ -67,7 +66,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             ");
         $project->setDisplay(1);
         $project->setGithub("https://github.com/WildCodeSchool/lyon-php-2003-project2-databuzz");
-        $project->setLink("Not deployed yet");
         $project->addTech($this->getReference("simpleMVC"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);

@@ -110,3 +110,36 @@ body {
     padding: 0;
     margin: 0;
 }
+
+// PROJECT SHOW STYLING
+.project-overview {
+
+    .project-desc {
+        font-size: 1.5em;
+    }
+
+    a {
+        font-size: 1.5em;
+    }
+}
+.carousel {
+    height: 600px;
+    margin: 30px 0;
+
+    .carousel-picture {
+        max-width: 100%;
+        max-height: 600px;
+        margin: auto;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev,
+    .carousel-indicators li {
+        filter: invert(100%);
+    }
+
+}
+
+.project-icon {
+    margin: 70px 0;
+}

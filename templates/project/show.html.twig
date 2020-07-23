@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+
+    {# Carousel of pictures #}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for picture in project.pictures %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index }}" {% if loop.index == 1 %} class="active" {% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for picture in project.pictures %}
+                <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+                    <img class="d-block carousel-picture align-self-center" src="{{ vich_uploader_asset(picture, 'urlFile') }}" alt="{{ picture.name }}">
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <h1>{{ project.name }}</h1>
+
+    {% if project.date is defined %}
+        <h2>made in {{ project.date ? project.date|date('M Y') : '' }}</h2>
+    {% endif %}
+
+    <div class="container project-overview d-flex flex-column">
+        <div class="row">
+            <div class="project-desc">{{ project.description }}</div>
+
+            {% if project.link is defined %}
+                <a href="{{ project.link }}">{{ project.name }} website</a>
+            {% else %}
+                <div>Not deployed yet</div>
+            {% endif %}
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            {% for tech in project.techs %}
+                {# Retrieve github picture from entity #}
+                <img class="project-icon" src="{{ vich_uploader_asset(tech.picture, 'urlFile') | imagine_filter('icons') }}" alt="Card image cap">
+
+            {% endfor %}
+
+            {% if project.github is defined %}
+                <a href="{{ project.github }}">
+                    <img class="project-icon" src="{{ vich_uploader_asset(githubPic, 'urlFile') | imagine_filter('icons') }}" alt="Card image cap">
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
