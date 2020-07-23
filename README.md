@@ -11,7 +11,7 @@
 * Clone this project
 * Run `composer install`
 * Run `yarn install`
-* Change database infos in .env.local (line 27)
+* Change database infos in .env.local
 * Create database / apply migrations / load fixtures
 
 ### Admin 
