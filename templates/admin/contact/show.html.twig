@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ContactForm{% endblock %}
+
+{% block body %}
+    <h1>ContactForm</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ contact.subject }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ contact.message }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>SendDate</th>
+                <td>{{ contact.sendDate ? contact.sendDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_contact_read', {'id': contact.id}) }}">{% if contact.messageRead == 0 %} Mark as read {% else %} Mark as unread {% endif %}</a>
+
+    <div>
+        <a href="{{ path('admin_contact_index') }}">back to list</a>
+    </div>
+
+    {{ include('admin/contact/_delete_form.html.twig') }}
+{% endblock %}

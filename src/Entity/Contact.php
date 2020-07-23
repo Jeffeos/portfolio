@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactFormRepository;
+use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use DateTime;
 
 /**
- * @ORM\Entity(repositoryClass=ContactFormRepository::class)
+ * @ORM\Entity(repositoryClass=ContactRepository::class)
  */
-class ContactForm
+class Contact
 {
     /**
      * @ORM\Id()
@@ -43,6 +43,11 @@ class ContactForm
      * @var DateTime
      */
     private $sendDate;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $messageRead = 0;
 
     public function getId(): ?int
     {
@@ -96,6 +101,18 @@ class ContactForm
     public function setSendDate(\DateTimeInterface $sendDate): self
     {
         $this->sendDate = $sendDate;
+
+        return $this;
+    }
+
+    public function getMessageRead(): ?bool
+    {
+        return $this->messageRead;
+    }
+
+    public function setMessageRead(bool $messageRead): self
+    {
+        $this->messageRead = $messageRead;
 
         return $this;
     }

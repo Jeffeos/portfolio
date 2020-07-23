@@ -3,12 +3,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Project;
 use App\Entity\Tech;
 use App\Entity\Picture;
 use App\Form\PictureType;
 use App\Form\ProjectType;
 use App\Form\TechType;
+use App\Repository\ContactRepository;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechRepository;
@@ -28,9 +30,11 @@ class AdminController extends AbstractController
      * @return Response
      * @Route("/", name="index")
      */
-    public function index(): Response
+    public function index(ContactRepository $contactRepository): Response
     {
-        return $this->render("admin/index.html.twig");
+        return $this->render("admin/index.html.twig", [
+            'messages' => count($contactRepository->findBy(['messageRead' => false])),
+        ]);
     }
 
     /**
@@ -285,4 +289,60 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_picture_index');
     }
 
+    /**
+     * @Route("/contact/", name="contact_index", methods={"GET"})
+     */
+    public function contactIndex(ContactRepository $contactRepository): Response
+    {
+        return $this->render('admin/contact/index.html.twig', [
+            'contacts' => $contactRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/contact/{id}", name="contact_show", methods={"GET"})
+     */
+    public function contactShow(Contact $contact): Response
+    {
+        return $this->render('admin/contact/show.html.twig', [
+            'contact' => $contact,
+        ]);
+    }
+
+    /**
+     * @Route("/contact/{id}", name="contact_delete", methods={"DELETE"})
+     */
+    public function contactDelete(Request $request, Contact $contact): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($contact);
+            $entityManager->flush();
+
+            $this->addFlash('danger', "Your message has been deleted successfully!");
+        }
+
+        return $this->redirectToRoute('admin_contact_index');
+    }
+
+    /**
+     * @Route("/contact/read/{id}", name="contact_read", methods={"GET"})
+     * @param Contact $contact
+     * @return Response
+     */
+    public function contactRead(Contact $contact): Response
+    {
+        if ($contact->getMessageRead() == false)
+        {
+            $contact->setMessageRead(true);
+            $this->addFlash('success', "Your message has been marked as read!");
+
+        } else {
+            $contact->setMessageRead(false);
+            $this->addFlash('success', "Your message has been marked as unread!");
+        }
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('admin_contact_index');
+    }
 }

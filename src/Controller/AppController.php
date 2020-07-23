@@ -3,9 +3,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,6 +47,31 @@ class AppController extends AbstractController
         return $this->render('/project/show.html.twig', [
             'project' => $project,
             'githubPic' => $pictureRepository->findOneBy(['name' => 'github']),
+        ]);
+    }
+
+    /**
+     * @Route("/contact/", name="contact_new", methods={"GET","POST"})
+     */
+    public function contactNew(Request $request): Response
+    {
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            $this->addFlash('success', "Your message has been sent!");
+
+            return $this->redirectToRoute('app_contact_new');
+        }
+
+        return $this->render('contact/new.html.twig', [
+            'contact' => $contact,
+            'form' => $form->createView(),
         ]);
     }
 
