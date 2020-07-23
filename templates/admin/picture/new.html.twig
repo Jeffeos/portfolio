@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Picture{% endblock %}
+
+{% block body %}
+    <h1>Create new Picture</h1>
+
+    {{ include('admin/picture/_form.html.twig') }}
+
+    <a href="{{ path('admin_picture_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.custom-file-input').on('change', function(event) {
+            var inputFile = event.currentTarget;
+            $(inputFile).parent()
+                .find('.custom-file-label')
+                .html(inputFile.files[0].name);
+        });
+    </script>
+{% endblock %}

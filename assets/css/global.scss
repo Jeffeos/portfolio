@@ -1,0 +1,16 @@
+// customize some Bootstrap variables
+$primary: #F1C40F;
+$secondary: #28B463;
+$tertiary: #1D8348;
+$quaternary: #000000;
+$quinary: #ffffff;
+
+$fontPrimary: 'Anton', sans-serif;
+$fontSecondary: 'Roboto', sans-serif;
+
+// Gradient
+$gradientPrimary: linear-gradient(135deg, #F7DC6F 50%, #F1C40F 70%, #F4D03F);
+$gradientSecondary:  linear-gradient(90deg, $tertiary, $secondary);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";

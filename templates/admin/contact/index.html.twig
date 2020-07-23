@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages index{% endblock %}
+
+{% block body %}
+    <h1>ContactForm index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Email</th>
+                <th>SendDate</th>
+                <th>Message Read?</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.subject }}</td>
+                <td>{{ contact.message }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.sendDate ? contact.sendDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{% if contact.messageRead == 1 %} Yes {% else %} No {% endif %}</td>
+                <td>
+                    <a href="{{ path('admin_contact_show', {'id': contact.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
