@@ -31,7 +31,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->setGithub("https://github.com/WildCodeSchool/lyon-php-2003-project3-greenergood");
         $project->setLink("http://garecentrale.thegreenergood.fr");
         $project->addTech($this->getReference("phpSymfony"));
-        $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
         $this->addReference("tgg", $project);
@@ -52,7 +51,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->setGithub("https://github.com/Jeffeos/doctopet");
         $project->setLink("Not deployed yet");
         $project->addTech($this->getReference("phpSymfony"));
-        $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
         $this->addReference("doctopet", $project);
@@ -71,7 +69,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->setGithub("https://github.com/WildCodeSchool/lyon-php-2003-project2-databuzz");
         $project->setLink("Not deployed yet");
         $project->addTech($this->getReference("simpleMVC"));
-        $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
         $this->addReference("tvdb", $project);

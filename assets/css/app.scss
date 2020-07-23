@@ -20,6 +20,19 @@ body {
         h1 {
             font-family: "Anton", sans-serif;
             text-align: center;
+            font-size: 7em;
+        }
+
+        h2 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+            font-size: 4em;
+        }
+
+        h3 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+            font-size: 2em;
         }
 
         a {
@@ -49,7 +62,9 @@ body {
                 top: -50px;
                 left: 0;
                 height: 30vw;
+                max-height: 600px;
                 width: 30vw;
+                max-width: 600px;
                 background: linear-gradient(90deg, $tertiary, $secondary);
                 transform: rotate(-45deg);
                 z-index: -1;
@@ -58,13 +73,29 @@ body {
             h1 {
                 margin-left: 200px;
             }
+
             .home-brief {
                 margin-left: 200px;
+                font-size: 1.5em;
+            }
+        }
+
+        // PROJECT CARDS
+        .project-section {
+            a {
+                margin: 30px 0;
+                color: $quaternary;
+                text-decoration: none;
             }
 
-        }
-        // PROJECT CARDS
-        .project-card {
+            .project-card {
+                border-radius: 25px;
+
+                .card-text {
+                    font-size: 1.2em;
+                }
+            }
+
         }
     }
 }

@@ -28,7 +28,7 @@ class AppController extends AbstractController
     {
         return $this->render('home.html.twig', [
             'user' => $userRepository->findOneBy(['lastname' => 'Delenne' ]),
-            'projects' => $projectRepository->findAll(),
+            'projects' => $projectRepository->findBy(['display' => 1]),
         ]);
     }
 }
