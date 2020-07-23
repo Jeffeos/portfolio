@@ -59,7 +59,7 @@ class Project
     private $techs;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project", cascade={"persist"})
      */
     private $pictures;
 

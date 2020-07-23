@@ -24,14 +24,19 @@ class TechFixtures extends Fixture
         $this->addReference('simpleMVC', $tech);
 
         $tech = new Tech();
-        $tech->setName('TWIG');
-        $manager->persist($tech);
-        $this->addReference('twig', $tech);
-
-        $tech = new Tech();
         $tech->setName('JavaScript');
         $manager->persist($tech);
         $this->addReference('javascript', $tech);
+
+        $tech = new Tech();
+        $tech->setName('GitHub');
+        $manager->persist($tech);
+        $this->addReference('github', $tech);
+
+        $tech = new Tech();
+        $tech->setName('Linkedin');
+        $manager->persist($tech);
+        $this->addReference('linkedin', $tech);
 
         $manager->flush();
     }

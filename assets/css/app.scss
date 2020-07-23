@@ -4,36 +4,100 @@ body {
     background-color: $primary;
     font-family: $fontSecondary;
 
-    // Styling for the whole content of the BODY
-    .body-block {
-        width: 80%;
-        margin: 0 auto;
-    }
+    .body-frame {
+        background: linear-gradient(135deg, #F7DC6F 50%, #F1C40F 70%, #F4D03F);
+        margin: 50px auto;
+        padding: 50px;
+        width: 90%;
+        border-radius: 25px;
 
-    h1 {
-        font-family: "Anton", sans-serif;
-        text-align: center;
-    }
+        // NAVBAR STYLING
+        .navbar {
+            font-family: $fontPrimary;
+            background-color: transparent;
+        }
 
-    a {
-        color: $tertiary;
-    }
+        h1 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+            font-size: 7em;
+        }
 
-    .btn {
-        background-color: $tertiary;
-        border-radius: 15px;
-        margin: 10px 0;
-    }
+        h2 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+            font-size: 4em;
+        }
 
-    // Styling for all the FORMS
-    label {
-        margin: 5px 0;
-    }
-}
+        h3 {
+            font-family: "Anton", sans-serif;
+            text-align: center;
+            font-size: 2em;
+        }
 
-// NAVBAR STYLING
-.navbar {
-    font-family: $fontPrimary;
+        a {
+            color: $tertiary;
+        }
+
+        .btn {
+            background-color: $tertiary;
+            border-radius: 15px;
+            margin: 10px 0;
+        }
+
+        // Styling for all the FORMS
+        label {
+            margin: 5px 0;
+        }
+
+        // HOME STYLING
+        .home-title {
+            margin: 110px 0 30vw;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                left: 0;
+                height: 30vw;
+                max-height: 600px;
+                width: 30vw;
+                max-width: 600px;
+                background: linear-gradient(90deg, $tertiary, $secondary);
+                transform: rotate(-45deg);
+                z-index: -1;
+            }
+
+            h1 {
+                margin-left: 200px;
+            }
+
+            .home-brief {
+                margin-left: 200px;
+                font-size: 1.5em;
+            }
+        }
+
+        // PROJECT CARDS
+        .project-section {
+            a {
+                margin: 30px 0;
+                color: $quaternary;
+                text-decoration: none;
+            }
+
+            .project-card {
+                border-radius: 25px;
+
+                .card-text {
+                    font-size: 1.2em;
+                }
+            }
+
+        }
+    }
 }
 
 // ADMIN STYLING
