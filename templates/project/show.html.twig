@@ -48,13 +48,13 @@
         <div class="row d-flex justify-content-center">
             {% for tech in project.techs %}
                 {# Retrieve github picture from entity #}
-                <img class="project-icon" src="{{ vich_uploader_asset(tech.picture, 'urlFile') | imagine_filter('icons') }}" alt="Card image cap">
+                <img class="project-icon" src="{{ vich_uploader_asset(tech.picture, 'urlFile') | imagine_filter('icons') }}" alt="{{ tech.name }}">
 
             {% endfor %}
 
             {% if project.github is defined %}
                 <a href="{{ project.github }}">
-                    <img class="project-icon" src="{{ vich_uploader_asset(githubPic, 'urlFile') | imagine_filter('icons') }}" alt="Card image cap">
+                    <img class="project-icon" src="{{ asset('img/github.png') | imagine_filter('icons')}}" alt="Github repository">
                 </a>
             {% endif %}
         </div>

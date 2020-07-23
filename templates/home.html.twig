@@ -36,8 +36,10 @@
                 {% for tech in techs %}
                     {# picture is set because vich does not accept a tech object nor a tech.picture path #}
                     {% set picture = tech.picture  %}
-                    <div class="">
+                    <div class="home-tech-icon d-flex align-items-center">
                         <img class="tech-icon" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('icons') }}" alt="{{ picture.name }}">
+                        {# Overlay of the icon with display of the percentage of usage of the tech #}
+                        <div class="icon-overlay d-flex align-items-center justify-content-center"><p>{{ percentUse[tech.id] }}%</p></div>
                     </div>
                 {% endfor %}
             </div>
