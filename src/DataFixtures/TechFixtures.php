@@ -28,16 +28,6 @@ class TechFixtures extends Fixture
         $manager->persist($tech);
         $this->addReference('javascript', $tech);
 
-        $tech = new Tech();
-        $tech->setName('GitHub');
-        $manager->persist($tech);
-        $this->addReference('github', $tech);
-
-        $tech = new Tech();
-        $tech->setName('Linkedin');
-        $manager->persist($tech);
-        $this->addReference('linkedin', $tech);
-
         $manager->flush();
     }
 }

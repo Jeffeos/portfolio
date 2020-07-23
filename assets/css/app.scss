@@ -5,7 +5,7 @@ body {
     font-family: $fontSecondary;
 
     .body-frame {
-        background: linear-gradient(135deg, #F7DC6F 50%, #F1C40F 70%, #F4D03F);
+        background: $gradientPrimary;
         margin: 50px auto;
         padding: 50px;
         width: 90%;
@@ -65,7 +65,7 @@ body {
                 max-height: 600px;
                 width: 30vw;
                 max-width: 600px;
-                background: linear-gradient(90deg, $tertiary, $secondary);
+                background: $gradientSecondary;
                 transform: rotate(-45deg);
                 z-index: -1;
             }
@@ -91,11 +91,52 @@ body {
             .project-card {
                 border-radius: 25px;
 
+                .card-img-top {
+                    border-top-left-radius: 25px;
+                    border-top-right-radius: 25px;
+                }
+
                 .card-text {
                     font-size: 1.2em;
                 }
             }
+        }
 
+        // TECHNOLOGIES SECTION
+        .techs-section {
+            margin: 50px 0;
+
+            .home-tech-icon {
+                position: relative;
+                width: fit-content;
+                margin: 10px 30px;
+
+                .tech-icon {
+                }
+
+                // Overlay of the tech icons with % of usage
+                .icon-overlay {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0;
+                    transition: 1s ease;
+                    background: $gradientSecondary;
+                    font-size: 1.5em;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                &:hover .icon-overlay {
+                    opacity: 1;
+                }
+            }
         }
     }
 }
