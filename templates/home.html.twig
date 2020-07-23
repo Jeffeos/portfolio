@@ -3,21 +3,26 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-    <div class="text-center">{{ user.brief }}</div>
+    <div class="home-title">
+        <div class="home-geometric"></div>
+        <h1 class="text-left">{{ user.firstname }} {{ user.lastname }}</h1>
+        <div class="home-brief">{{ user.brief }}</div>
+    </div>
 
     <section class="project-section">
         <div class="d-flex">
             {% for project in projects %}
                 {# Slice the array of pictures and retrieve the first object picture for vich display #}
                 {% for picture in project.pictures[:1]  %}
-                    <div class="col-3 card project-card">
-                    <img class="card-img-top" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('square') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h3>{{ project.name }}</h3>
-                        <p class="card-text">{{ project.description }}</p>
-                    </div>
-                </div>
+                    <a href="#">
+                        <div class="col-sm-12 col-md-5 col-lg-4 card project-card">
+                            <img class="card-img-top" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('thumb') }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h3>{{ project.name }}</h3>
+                                <p class="card-text">{{ project.description }}</p>
+                            </div>
+                        </div>
+                    </a>
                 {% endfor %}
             {% endfor %}
         </div>

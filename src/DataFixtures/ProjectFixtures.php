@@ -34,6 +34,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
+        $this->addReference("tgg", $project);
 
         // DOCTOPET
         $project = new Project();
@@ -54,6 +55,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
+        $this->addReference("doctopet", $project);
 
         // TVDB
         $project = new Project();
@@ -72,6 +74,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project->addTech($this->getReference("twig"));
         $project->addTech($this->getReference("javascript"));
         $manager->persist($project);
+        $this->addReference("tvdb", $project);
 
         $manager->flush();
     }

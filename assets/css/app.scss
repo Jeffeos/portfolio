@@ -5,8 +5,7 @@ body {
     font-family: $fontSecondary;
 
     .body-frame {
-        background: linear-gradient(135deg, #C0D9AF, #9DB68C, #A6D785);
-
+        background: linear-gradient(135deg, #F7DC6F 50%, #F1C40F 70%, #F4D03F);
         margin: 50px auto;
         padding: 50px;
         width: 90%;
@@ -38,7 +37,32 @@ body {
             margin: 5px 0;
         }
 
-        // INDEX STYLING
+        // HOME STYLING
+        .home-title {
+            margin: 110px 0 30vw;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                left: 0;
+                height: 30vw;
+                width: 30vw;
+                background: linear-gradient(90deg, $tertiary, $secondary);
+                transform: rotate(-45deg);
+                z-index: -1;
+            }
+
+            h1 {
+                margin-left: 200px;
+            }
+            .home-brief {
+                margin-left: 200px;
+            }
+
+        }
         // PROJECT CARDS
         .project-card {
         }
