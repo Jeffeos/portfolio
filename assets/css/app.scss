@@ -95,7 +95,15 @@ body {
                     font-size: 1.2em;
                 }
             }
+        }
 
+        // TECHNOLOGIES SECTION
+        .techs-section {
+            margin: 50px 0;
+
+            .tech-icon {
+                margin: 10px 30px;
+            }
         }
     }
 }

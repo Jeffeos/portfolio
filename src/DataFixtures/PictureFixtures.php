@@ -107,18 +107,6 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         $techPicture->setTech($this->getReference('simpleMVC'));
         $manager->persist($techPicture);
 
-        $techPicture = new Picture();
-        $techPicture->setName('linkedin');
-        $techPicture->setUrl('5f19445f7f1ef672538958.png');
-        $techPicture->setTech($this->getReference('linkedin'));
-        $manager->persist($techPicture);
-
-        $techPicture = new Picture();
-        $techPicture->setName('github');
-        $techPicture->setUrl('5f194471bbb06339493360.png');
-        $techPicture->setTech($this->getReference('github'));
-        $manager->persist($techPicture);
-
         $manager->flush();
     }
 }

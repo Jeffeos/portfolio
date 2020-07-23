@@ -7,6 +7,7 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
+use App\Repository\TechRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,13 +27,15 @@ class AppController extends AbstractController
      * @Route("/", name="home")
      * @param UserRepository $userRepository
      * @param ProjectRepository $projectRepository
+     * @param TechRepository $techRepository
      * @return Response
      */
-    public function home(UserRepository $userRepository, ProjectRepository $projectRepository): Response
+    public function home(UserRepository $userRepository, ProjectRepository $projectRepository, TechRepository $techRepository): Response
     {
         return $this->render('home.html.twig', [
             'user' => $userRepository->findOneBy(['lastname' => 'Delenne' ]),
             'projects' => $projectRepository->findBy(['display' => 1]),
+            'techs' => $techRepository->findAll(),
         ]);
     }
 

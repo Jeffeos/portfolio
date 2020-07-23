@@ -17,7 +17,7 @@
                 {% for picture in project.pictures[:1]  %}
                     <a class="col-sm-12 col-lg-4 d-flex align-items-stretch" href="{{ path('app_project_show', {'id': project.id}) }}">
                         <div class="card project-card">
-                            <img class="card-img-top" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('home_project') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('home_project') }}" alt="{{ picture.name }}">
                             <div class="card-body">
                                 <h3 class="text-center">{{ project.name }}</h3>
                                 <p class="card-text text-justify">{{ project.description }}</p>
@@ -26,6 +26,21 @@
                     </a>
                 {% endfor %}
             {% endfor %}
+        </div>
+    </section>
+
+    <section class="techs-section">
+        <h2>TECHNOLOGIES USED</h2>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                {% for tech in techs %}
+                    {# picture is set because vich does not accept a tech object nor a tech.picture path #}
+                    {% set picture = tech.picture  %}
+                    <div class="">
+                        <img class="tech-icon" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('icons') }}" alt="{{ picture.name }}">
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
