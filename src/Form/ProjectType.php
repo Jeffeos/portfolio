@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Project;
 use DateTime;
 use App\Entity\Tech;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -24,7 +25,13 @@ class ProjectType extends AbstractType
                 'format' => 'dd MM yyyy',
                 "data" => new DateTime(),
             ])
-            ->add('description', null, ['label' => "Description *", 'empty_data' => ''])
+            ->add('description', CKEditorType::class, [
+                'label' => "Description *",
+                'empty_data' => '',
+                'config' => [
+                    'uiColor' => '#ffffff',
+                ]
+            ])
             ->add('display', ChoiceType::class, [
                 'label' => "Display project?",
                 'choices' => [
