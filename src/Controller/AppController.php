@@ -9,6 +9,7 @@ use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechRepository;
 use App\Repository\UserRepository;
+use App\Service\TechUsed;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,12 +31,13 @@ class AppController extends AbstractController
      * @param TechRepository $techRepository
      * @return Response
      */
-    public function home(UserRepository $userRepository, ProjectRepository $projectRepository, TechRepository $techRepository): Response
+    public function home(UserRepository $userRepository, ProjectRepository $projectRepository, TechRepository $techRepository, TechUsed $techUsed): Response
     {
         return $this->render('home.html.twig', [
             'user' => $userRepository->findOneBy(['lastname' => 'Delenne' ]),
             'projects' => $projectRepository->findBy(['display' => 1]),
             'techs' => $techRepository->findAll(),
+            'percentUse' => $techUsed->percentUse($techRepository, $projectRepository),
         ]);
     }
 

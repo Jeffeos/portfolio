@@ -45,7 +45,7 @@ class Picture
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="picture")
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="pictures")
      */
     private $project;
 

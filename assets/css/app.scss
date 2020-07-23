@@ -91,6 +91,11 @@ body {
             .project-card {
                 border-radius: 25px;
 
+                .card-img-top {
+                    border-top-left-radius: 25px;
+                    border-top-right-radius: 25px;
+                }
+
                 .card-text {
                     font-size: 1.2em;
                 }
