@@ -31,6 +31,7 @@ class UserFixtures extends Fixture
             'password'
         ));
         $manager->persist($user);
+        $this->addReference("gd", $user);
 
         $manager->flush();
     }

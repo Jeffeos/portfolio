@@ -13,14 +13,6 @@ liip_imagine:
                           mode: outbound
                   }
 
-        square:
-            quality: 75
-            filters:
-                scale:
-                  {
-                      dim: [300, 300]
-                  }
-
         home_project:
             quality: 75
             filters:
@@ -32,7 +24,13 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail:
-                  {
-                      size: [75, 75]
-                          mode: outbound
-                  }
+                    size: [75, 75]
+                    mode: outbound
+
+        my_picture:
+            quality: 100
+            filters:
+                thumbnail:
+                    size: [700, 900]
+                    mode: outbound
+

@@ -13,7 +13,7 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
 {
     public function getDependencies()
     {
-        return [ProjectFixtures::class, TechFixtures::class];
+        return [ProjectFixtures::class, TechFixtures::class, UserFixtures::class];
     }
 
     public function load(ObjectManager $manager)
@@ -106,6 +106,13 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         $techPicture->setUrl('5f1943d0b8f20863740110.png');
         $techPicture->setTech($this->getReference('simpleMVC'));
         $manager->persist($techPicture);
+
+        // USER
+        $userPicture = new Picture();
+        $userPicture->setName('geoffrey_delenne');
+        $userPicture->setUrl('5f199bd75bc0f024603009.jpg');
+        $userPicture->setUser($this->getReference('gd'));
+        $manager->persist($userPicture);
 
         $manager->flush();
     }

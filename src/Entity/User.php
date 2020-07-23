@@ -202,12 +202,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPicture(): ?Pictures
+    public function getPicture(): ?Picture
     {
         return $this->picture;
     }
 
-    public function setPicture(?Pictures $picture): self
+    public function setPicture(?Picture $picture): self
     {
         $this->picture = $picture;
 

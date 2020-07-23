@@ -14,7 +14,7 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, ['label' => "Email *", 'empty_data' => ''])
-            ->add('subject', null, ['label' => "subject *", 'required' => false, 'empty_data' => ''])
+            ->add('subject', null, ['label' => "Subject *", 'required' => false, 'empty_data' => ''])
             ->add('message', null, ['label' => "Message *", 'empty_data' => ''])
         ;
     }

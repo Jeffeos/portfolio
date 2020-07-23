@@ -3,139 +3,148 @@
 body {
     background-color: $primary;
     font-family: $fontSecondary;
+}
 
-    .body-frame {
-        background: $gradientPrimary;
-        margin: 50px auto;
-        padding: 50px;
-        width: 90%;
-        border-radius: 25px;
+h1 {
+    font-family: "Anton", sans-serif;
+    text-align: center;
+    font-size: 7em;
+}
 
-        // NAVBAR STYLING
-        .navbar {
-            font-family: $fontPrimary;
-            background-color: transparent;
+h2 {
+    font-family: "Anton", sans-serif;
+    text-align: center;
+    font-size: 4em;
+}
+
+h3 {
+    font-family: "Anton", sans-serif;
+    text-align: center;
+    font-size: 2em;
+}
+
+a {
+    color: $tertiary;
+}
+
+.btn {
+    background-color: $tertiary;
+    border-radius: 15px;
+    margin: 10px 0;
+}
+
+// Styling for all the FORMS
+label {
+    margin: 5px 0;
+}
+
+.body-frame {
+    background: $gradientPrimary;
+    margin: 50px auto;
+    padding: 50px;
+    width: 90%;
+    border-radius: 25px;
+
+    // NAVBAR STYLING
+    .navbar {
+        font-family: $fontPrimary;
+        background-color: transparent;
+
+        .nav-link {
+            color: black;
+
+            &:hover {
+                color: $tertiary;
+            }
+        }
+    }
+
+
+    // HOME STYLING
+    .home-title {
+        margin: 110px 0 20vw;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            height: 30vw;
+            max-height: 600px;
+            width: 30vw;
+            max-width: 600px;
+            background: $gradientSecondary;
+            transform: rotate(-45deg);
+            z-index: -1;
         }
 
         h1 {
-            font-family: "Anton", sans-serif;
-            text-align: center;
-            font-size: 7em;
+            margin-left: 200px;
         }
 
-        h2 {
-            font-family: "Anton", sans-serif;
-            text-align: center;
-            font-size: 4em;
+        .home-brief {
+            margin-left: 200px;
+            font-size: 1.5em;
         }
+    }
 
-        h3 {
-            font-family: "Anton", sans-serif;
-            text-align: center;
-            font-size: 2em;
-        }
-
+    // PROJECT CARDS
+    .project-section {
         a {
-            color: $tertiary;
+            margin: 30px 0;
+            color: $quaternary;
+            text-decoration: none;
         }
 
-        .btn {
-            background-color: $tertiary;
-            border-radius: 15px;
-            margin: 10px 0;
-        }
+        .project-card {
+            border-radius: 25px;
 
-        // Styling for all the FORMS
-        label {
-            margin: 5px 0;
-        }
+            .card-img-top {
+                border-top-left-radius: 25px;
+                border-top-right-radius: 25px;
+            }
 
-        // HOME STYLING
-        .home-title {
-            margin: 110px 0 30vw;
+            .card-text {
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    // TECHNOLOGIES SECTION
+    .techs-section {
+        margin: 50px 0;
+
+        .home-tech-icon {
             position: relative;
-            z-index: 1;
+            width: fit-content;
+            margin: 10px 30px;
 
-            &::before {
-                content: '';
+            .tech-icon {
+            }
+
+            // Overlay of the tech icons with % of usage
+            .icon-overlay {
                 position: absolute;
-                top: -50px;
+                top: 0;
+                bottom: 0;
                 left: 0;
-                height: 30vw;
-                max-height: 600px;
-                width: 30vw;
-                max-width: 600px;
+                right: 0;
+                height: 100%;
+                width: 100%;
+                opacity: 0;
+                transition: 1s ease;
                 background: $gradientSecondary;
-                transform: rotate(-45deg);
-                z-index: -1;
-            }
-
-            h1 {
-                margin-left: 200px;
-            }
-
-            .home-brief {
-                margin-left: 200px;
                 font-size: 1.5em;
-            }
-        }
 
-        // PROJECT CARDS
-        .project-section {
-            a {
-                margin: 30px 0;
-                color: $quaternary;
-                text-decoration: none;
-            }
-
-            .project-card {
-                border-radius: 25px;
-
-                .card-img-top {
-                    border-top-left-radius: 25px;
-                    border-top-right-radius: 25px;
-                }
-
-                .card-text {
-                    font-size: 1.2em;
+                p {
+                    margin: 0;
                 }
             }
-        }
 
-        // TECHNOLOGIES SECTION
-        .techs-section {
-            margin: 50px 0;
-
-            .home-tech-icon {
-                position: relative;
-                width: fit-content;
-                margin: 10px 30px;
-
-                .tech-icon {
-                }
-
-                // Overlay of the tech icons with % of usage
-                .icon-overlay {
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 100%;
-                    width: 100%;
-                    opacity: 0;
-                    transition: 1s ease;
-                    background: $gradientSecondary;
-                    font-size: 1.5em;
-
-                    p {
-                        margin: 0;
-                    }
-                }
-
-                &:hover .icon-overlay {
-                    opacity: 1;
-                }
+            &:hover .icon-overlay {
+                opacity: 1;
             }
         }
     }
@@ -143,6 +152,12 @@ body {
 
 // ADMIN STYLING
 // ADMIN PROJECT STYLING
+.body-block .table {
+    th, tr {
+        font-size: 0.7em;
+    }
+}
+
 .index-delete form button {
     border: none;
     text-decoration: none;
@@ -163,6 +178,7 @@ body {
         font-size: 1.5em;
     }
 }
+
 .carousel {
     height: 600px;
     margin: 30px 0;
@@ -185,7 +201,45 @@ body {
 }
 
 // FOOTER STYLING
-.footer-icons img {
-    margin: 10px 30px;
+.page-footer {
+    margin-top: 70px;
 
+    .footer-icons img {
+        margin: 10px 30px;
+    }
+}
+// CONTACT FORM
+.contact-form {
+    width: 80%;
+    margin: auto;
+
+    textarea {
+        height: 300px;
+    }
+}
+
+// BIO PAGE
+.my-picture {
+    width: 25em;
+    height: 25em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media all and (min-width: 992px) {
+    .my-picture {
+        width: 25em;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .my-bio {
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+
+        h1 {
+            text-align: start;
+        }
+    }
 }
