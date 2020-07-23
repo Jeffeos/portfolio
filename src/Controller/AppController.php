@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,4 +32,19 @@ class AppController extends AbstractController
             'projects' => $projectRepository->findBy(['display' => 1]),
         ]);
     }
+
+    /**
+     * @Route("/project/{id}", name="project_show", methods={"GET"})
+     * @param Project $project
+     * @param PictureRepository $pictureRepository
+     * @return Response
+     */
+    public function appShowProject(Project $project, PictureRepository $pictureRepository): Response
+    {
+        return $this->render('/project/show.html.twig', [
+            'project' => $project,
+            'githubPic' => $pictureRepository->findOneBy(['name' => 'github']),
+        ]);
+    }
+
 }

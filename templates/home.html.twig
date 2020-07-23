@@ -15,7 +15,7 @@
             {% for project in projects %}
                 {# Slice the array of pictures and retrieve the first object picture for vich display #}
                 {% for picture in project.pictures[:1]  %}
-                    <a class="col-sm-12 col-lg-4 d-flex align-items-stretch" href="#">
+                    <a class="col-sm-12 col-lg-4 d-flex align-items-stretch" href="{{ path('app_project_show', {'id': project.id}) }}">
                         <div class="card project-card">
                             <img class="card-img-top" src="{{ vich_uploader_asset(picture, 'urlFile') | imagine_filter('home_project') }}" alt="Card image cap">
                             <div class="card-body">

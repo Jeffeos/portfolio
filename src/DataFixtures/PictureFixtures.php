@@ -91,7 +91,7 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         // TECH
         $techPicture = new Picture();
         $techPicture->setName('symfony');
-        $techPicture->setUrl('5f1943b6a2d75525515958.jpg');
+        $techPicture->setUrl('5f194a326b68b543700782.png');
         $techPicture->setTech($this->getReference('phpSymfony'));
         $manager->persist($techPicture);
 
