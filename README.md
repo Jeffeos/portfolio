@@ -16,6 +16,6 @@
 
 ### Admin 
 
-1. Admin can :
+1. Admin can:
     * Add projects, techs, and pictures
     * Consult messages received
