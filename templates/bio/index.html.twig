@@ -1,0 +1,14 @@
+{% extends 'base.html.twig'%}
+{% block title %}Bio de {{ user.firstname }} {{ user.lastname }}{% endblock %}
+
+{% block body %}
+
+    <div class="bio-container d-flex flex-sm-column align-items-center flex-lg-row">
+        <img class="my-picture" src="{{ vich_uploader_asset(user.picture, 'urlFile') | imagine_filter('my_picture') }}">
+        <div class="my-bio">
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            <div>{{ user.brief }}</div>
+        </div>
+    </div>
+
+{% endblock %}

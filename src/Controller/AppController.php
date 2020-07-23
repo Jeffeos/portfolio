@@ -80,4 +80,13 @@ class AppController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/bio/", name="bio")
+     */
+    public function bio(UserRepository $userRepository): Response
+    {
+        return $this->render('bio/index.html.twig', [
+            'user' => $userRepository->findOneBy(['lastname' => 'Delenne']),
+        ]);
+    }
 }
